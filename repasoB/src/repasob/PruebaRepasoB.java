@@ -9,13 +9,16 @@ package repasob;
  *
  * @author NOICE
  */
-public class RepasoB {
+public class PruebaRepasoB {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       /* GuiaB.quienMayor(1, 2);
+        GuiaB.quienMayor(2, 1);
+        GuiaB.quienMayor(1, 1);*/
+       GuiaB.firstLetter();
     }
     
 }

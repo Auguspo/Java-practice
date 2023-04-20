@@ -8,7 +8,6 @@ package repasoa;
 import java.util.Scanner;
 
 /**
- *
  * @author NOICE
  */
 public class GuiaA {
@@ -40,15 +39,15 @@ public class GuiaA {
     public static void cToF() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la temperatura en Cº: ");
-        int tempF = 32+(9* sc.nextInt()/5);
-        System.out.print("La temperatura en F es: "+ tempF );
+        double tempF = 32+(9* sc.nextDouble()/5);
+        System.out.print("La temperatura en F es: "+ tempF +"F\n");
      }
     
     public static void math(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese el número: ");
         double num = sc.nextDouble();
-        System.out.println("El doble es "+ num*2 +", el triple es " + num*3 + "y la raiz cuadrada es "+ Math.sqrt(num));
+        System.out.println("El doble es "+ num*2 +", el triple es " + num*3 + "y la raiz cuadrada es "+ Math.sqrt(num)+"\n");
         
     } 
 }

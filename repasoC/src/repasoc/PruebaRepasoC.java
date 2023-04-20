@@ -3,23 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package repasoa;
+package repasoc;
 
 /**
  *
  * @author NOICE
  */
-public class PruebaRepasoA {
+public class PruebaRepasoC {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      /* GuiaA.sumarDosNumeros();*/
-      /* GuiaA.nombrePrint();*/
-      /*GuiaA.upperLower();*/
-      GuiaA.cToF();
-      /*GuiaA.math();*/
+        GuiaC.valor();
     }
     
 }
