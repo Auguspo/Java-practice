@@ -15,7 +15,7 @@ public class PruebaRepasoC {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        GuiaC.valor();
+        GuiaC.menu();
     }
     
 }
