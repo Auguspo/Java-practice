@@ -35,7 +35,7 @@ public class GuiaC {
     }
     
     
-    public static void menu() {
+    public static void Menu() {
         Scanner sc = new Scanner(System.in);
         int num1, num2, opcion, resultado;
         char confirmacion;
@@ -105,6 +105,82 @@ public class GuiaC {
         } while (opcion != 5);
 
     }
-      
+  
+    public static void Veinte(){
+        Scanner sc = new Scanner(System.in);
+        int suma=0;
+        
+        for(int i=0;i<20;i++){
+            System.out.println("Ingrese el numero: " +
+             i);
+            int numero = sc.nextInt();
+            if(numero == 0 ){
+                System.out.println("Ustedes ha ingresado el numero 0");
+                break;
+            }else if(numero > 0) {
+                suma+= numero;}
+        }
+        System.out.println("La suma total de sus numero es: " + suma );
+    }
     
+    public static void RS232(){
+        Scanner sc = new Scanner(System.in);
+        String frase= "";
+        int frasesCorrectas = 0;
+        int frasesIncorrectas = 0;
+        
+        while(frase.equals("&&&&&")){
+            frase= sc.nextLine();
+            if(frase.length() == 5 && frase.charAt(0) == 'X' && frase.charAt(4)== '0')
+                frasesCorrectas++;
+            else if(!frase.equals("&&&&&")) frasesIncorrectas++;    
+        }
+        System.out.println("Usted ha ingresado" + frasesCorrectas + "frases correctas.");
+        System.out.println("Usted ha ingresado" + frasesIncorrectas + "frases incorrectas.");
+    }
+    
+    public static void Cuadrado(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el largo del cuadrado:");
+        int n = sc.nextInt();
+        
+        int i = 1;
+        while(i<=n){
+            int j= 1;
+            while(j<=n){
+                if(i==1 || i==n || j==1 || j==n)
+                    System.out.print("* ");
+                else System.out.print("  ");
+                j++;
+            }
+            System.out.println();
+            i++;
+        }
+    }
+
+    public static void numAsterisco(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese 4 numeros entre 1 y 20:");
+        int[] numeros =new int[4];
+        
+        for(int i = 0; i<numeros.length ;i++){
+
+            numeros[i]= sc.nextInt();
+            
+            while(numeros[i]<1 || numeros[i]>20){
+                System.out.println("El numero debe estar entre 1 y 20, ingreselo nuevamente.");
+                 numeros[i]= sc.nextInt();
+            }
+        }
+        
+        System.out.println("Los numeros y los astericos son:");
+        for(int i = 0; i < numeros.length; i++){
+            System.out.print(numeros[i]+ " ");
+            for(int j = 0; j< numeros[i];j++){
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        
+    }
 }

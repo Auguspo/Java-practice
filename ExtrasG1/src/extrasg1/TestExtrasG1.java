@@ -3,20 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package repasoc;
+package extrasg1;
 
 /**
  *
  * @author NOICE
  */
-public class PruebaRepasoC {
+public class TestExtrasG1 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*GuiaC.menu();*/
-        GuiaC.numAsterisco();
+        ExtrasG1.Estatura();
     }
     
 }
