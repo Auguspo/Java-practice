@@ -110,7 +110,7 @@ public class ExtrasG1 {
      
     }
     
-        public static void Estatura() {
+    public static void Estatura() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Ingrese la cantidad de personas: ");
         int n = sc.nextInt();
@@ -139,4 +139,131 @@ public class ExtrasG1 {
         System.out.println("El promedio de estaturas menores a 1.60 metros es de " + promedioEstaturasMenores + " metros.");
     }
     
+    public static void Enteros(){
+        Scanner sc = new Scanner(System.in);
+        int cantidadNumeros = 0;
+        int cantidadPares = 0;
+        int cantidadImpares = 0;
+
+        while (true) {
+            System.out.print("Ingrese un número entero positivo: ");
+            int numero = sc.nextInt();
+
+            if (numero < 0) {
+                continue;
+            }
+
+            cantidadNumeros++;
+
+            if (numero % 2 == 0) {
+                cantidadPares++;
+            } else {
+                cantidadImpares++;
+            }
+
+            if (numero % 5 == 0) {
+                System.out.println("Se ha ingresado un múltiplo de cinco.");
+                System.out.println("Cantidad de números leídos: " + cantidadNumeros);
+                System.out.println("Cantidad de números pares: " + cantidadPares);
+                System.out.println("Cantidad de números impares: " + cantidadImpares);
+                break;
+            }
+        }
+        
+    }
+    
+    public static void Division(){
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingrese el dividendo seguido por el divisor");
+        int numero = sc.nextInt();
+        int divisor = sc.nextInt();
+        
+        int cociente = 0;
+        int dividendo=numero;
+        
+        while(dividendo-divisor>0){
+            cociente++;
+            dividendo=dividendo-divisor;       
+            
+        }
+        System.out.println("El resultado de la division entre " + numero +" y "+ divisor + " es " + cociente);
+         
+    }
+    
+    public static void Random(){
+        Scanner sc = new Scanner(System.in);
+        int random = (int) (Math.random()*10+1)*(int) (Math.random()*10+1);
+       
+        
+        System.out.println("Adivine el resultado de una multiplicación entre dos\n" +
+        "números generados aleatoriamente entre 0 y 10.");
+        
+        int respuesta = sc.nextInt();
+        
+        while(random != respuesta ){
+            System.out.println("Pruebe de nuevo: ");
+            respuesta = sc.nextInt();
+        }
+        
+        System.out.println("Correcto!!");
+    }    
+    
+    public static void cantidadDeDigitos(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese una secuencia de numeros: ");
+        
+        int numeros = sc.nextInt();
+        int contador= 1 ;
+        int aux= numeros/10;
+        
+        while(aux >0){
+            aux=aux/10;
+            contador++;
+        }
+        System.out.println("El numero "+numeros+" tiene " + contador + " digitos.");
+        
+    }
+    
+    public static void contadorE(){
+        
+        for(int i= 0;i<10;i++){
+            for(int j= 0;j<10;j++){
+                for(int k= 0;k<10;k++){
+                    
+                    if(i== 3){
+                        System.out.print("E-");
+                    }else {
+                        System.out.print(i+"-");
+                    }
+                    
+                    if(j == 3){
+                        System.out.print("E-");
+                    }else {
+                        System.out.print(j+"-");
+                    }
+                    
+                    if(k == 3){
+                        System.out.println("E");
+                    }else {
+                        System.out.println(k);
+                    }
+                }
+            }
+        }
+    }
+    
+    public static void escalera(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese la altura de la escalera");
+        
+        int altura = sc.nextInt();
+        
+        for(int i = 0; i<altura; i++){
+            for(int j = 0; j<=i;j++){
+                System.out.print(j+1);
+            }
+            System.out.println();
+        }
+    }
 }

@@ -181,6 +181,5 @@ public class GuiaC {
             }
             System.out.println();
         }
-        
     }
 }

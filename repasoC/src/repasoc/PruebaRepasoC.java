@@ -16,7 +16,7 @@ public class PruebaRepasoC {
      */
     public static void main(String[] args) {
         /*GuiaC.menu();*/
-        GuiaC.numAsterisco();
+        GuiaC.Cuadrado();
     }
     
 }

@@ -15,7 +15,7 @@ public class TestExtrasG1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ExtrasG1.Estatura();
+        ExtrasG1.escalera();
     }
     
 }
