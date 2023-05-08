@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package extrasg1;
+package extrasg2;
 
 /**
  *
  * @author NOICE
  */
-public class TestExtrasG1 {
+public class TestExtrasG2 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ExtrasG1.escalera();
+        ExtrasG2.escalera();
     }
     
 }

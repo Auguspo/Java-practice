@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package extrasg1;
+package extrasg2;
 import java.util.Scanner;
 /**
  *
  * @author NOICE
  */
-public class ExtrasG1 {
+public class ExtrasG2 {
     public static void minToHs(){
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la cantaidad de minutos a convertir:");
