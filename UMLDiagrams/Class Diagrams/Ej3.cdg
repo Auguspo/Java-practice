@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ExtrasG3">
+  <ClassDiagramComponents>
+    <Class name="Venta" package="" visibility="public" xPosition="10.0" yPosition="49.0">
+      <Fields>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="vendedor" type="Vendedor" visibility="private"/>
+        <Field name="productos" type="Producto[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularTotal" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cliente" package="" visibility="public" xPosition="42.0" yPosition="270.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="ciudad" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="ciudad"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Producto" package="" visibility="public" xPosition="240.0" yPosition="49.0">
+      <Fields>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="precioLista" type="double" visibility="private"/>
+        <Field name="stock" type="int" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecioPublico" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
