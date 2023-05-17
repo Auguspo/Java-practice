@@ -1,19 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ClassDiagram name="ExtrasG3">
+<ClassDiagram name="Ej3">
   <ClassDiagramComponents>
-    <Class name="Venta" package="" visibility="public" xPosition="10.0" yPosition="49.0">
-      <Fields>
-        <Field name="cliente" type="Cliente" visibility="private"/>
-        <Field name="vendedor" type="Vendedor" visibility="private"/>
-        <Field name="productos" type="Producto[]" visibility="private"/>
-      </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="calcularTotal" returnType="double" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="Cliente" package="" visibility="public" xPosition="42.0" yPosition="270.0">
+    <Class name="Cliente" package="Ej3" visibility="public" xPosition="20.0" yPosition="20.0">
       <Fields>
         <Field name="nombre" type="String" visibility="private"/>
         <Field name="ciudad" type="String" visibility="private"/>
@@ -24,20 +13,63 @@
           <Argument type="String" name="ciudad"/>
         </Constructor>
       </Constructors>
-      <Methods/>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="getCiudad" returnType="String" visibility="public"/>
+      </Methods>
     </Class>
-    <Class name="Producto" package="" visibility="public" xPosition="240.0" yPosition="49.0">
+    <Class name="Producto" package="Ej3" visibility="public" xPosition="290.0" yPosition="306.0">
       <Fields>
         <Field name="descripcion" type="String" visibility="private"/>
         <Field name="precioLista" type="double" visibility="private"/>
         <Field name="stock" type="int" visibility="private"/>
-        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="tipoProducto" type="String" visibility="private"/>
       </Fields>
-      <Constructors/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="descripcion"/>
+          <Argument type="double" name="precioLista"/>
+          <Argument type="int" name="stock"/>
+          <Argument type="String" name="tipoProducto"/>
+        </Constructor>
+      </Constructors>
       <Methods>
         <Method name="calcularPrecioPublico" returnType="double" visibility="public"/>
       </Methods>
     </Class>
+    <Class name="Vendedor" package="Ej3" visibility="public" xPosition="358.0" yPosition="152.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Venta" package="Ej3" visibility="public" xPosition="608.0" yPosition="38.0">
+      <Fields>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="vendedor" type="Vendedor" visibility="private"/>
+        <Field name="productos" type="Producto[]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="Vendedor" name="vendedor"/>
+          <Argument type="Producto[]" name="productos"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calcularTotal" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
-  <ClassDiagramRelations/>
+  <ClassDiagramRelations>
+    <HasRelation name="producto" source="Ej3.Venta" target="Ej3.Producto" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <HasRelation name="vendedor" source="Ej3.Venta" target="Ej3.Vendedor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cliente" source="Ej3.Venta" target="Ej3.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
 </ClassDiagram>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ClassDiagram name="ej1">
+<ClassDiagram name="Ej1">
   <ClassDiagramComponents>
-    <Class name="GPS" package="" visibility="public" xPosition="86.0" yPosition="162.0">
+    <Class name="GPS" package="" visibility="public" xPosition="20.0" yPosition="20.0">
       <Fields>
         <Field name="marca" type="String" visibility="private"/>
         <Field name="modelo" type="String" visibility="private"/>
@@ -18,28 +18,7 @@
         <Method name="mover" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Posicion" package="" visibility="public" xPosition="530.0" yPosition="152.0">
-      <Fields>
-        <Field name="latitud" type="double" visibility="private"/>
-        <Field name="longitud" type="double" visibility="private"/>
-      </Fields>
-      <Constructors/>
-      <Methods>
-        <Method name="Posicion" returnType="double" visibility="public">
-          <Argument type="double" name="latitud"/>
-          <Argument type="double" name="longitud"/>
-        </Method>
-        <Method name="getLatitud" returnType="double" visibility="public"/>
-        <Method name="setLatitud" returnType="double" visibility="public">
-          <Argument type="double" name="latitud"/>
-        </Method>
-        <Method name="getLongitud" returnType="double" visibility="public"/>
-        <Method name="setLongitud" returnType="double" visibility="public">
-          <Argument type="double" name="longitud"/>
-        </Method>
-      </Methods>
-    </Class>
-    <Class name="Persona" package="" visibility="public" xPosition="75.0" yPosition="549.0">
+    <Class name="Persona" package="" visibility="public" xPosition="20.0" yPosition="332.0">
       <Fields>
         <Field name="apellido" type="String" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -63,9 +42,31 @@
         </Method>
       </Methods>
     </Class>
+    <Class name="Posicion" package="" visibility="public" xPosition="620.0" yPosition="1.0">
+      <Fields>
+        <Field name="latitud" type="double" visibility="private"/>
+        <Field name="longitud" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Posicion" returnType="double" visibility="public">
+          <Argument type="double" name="latitud"/>
+          <Argument type="double" name="longitud"/>
+        </Method>
+        <Method name="getLatitud" returnType="double" visibility="public"/>
+        <Method name="setLatitud" returnType="double" visibility="public">
+          <Argument type="double" name="latitud"/>
+        </Method>
+        <Method name="getLongitud" returnType="double" visibility="public"/>
+        <Method name="setLongitud" returnType="double" visibility="public">
+          <Argument type="double" name="longitud"/>
+        </Method>
+      </Methods>
+    </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <UseRelation name="usa" source="Persona" target="GPS" sourceCardinality="0..1" targetCardinality="1..1"/>
-    <HasRelation name="has" source="GPS" target="Posicion" type="Default" sourceCardinality="0..1" targetCardinality="0..1"/>
+    <HasRelation name="ultimaUbicacion" source="GPS" target="Posicion" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Persona" target="GPS" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GPS" target="Posicion" sourceCardinality="1..1" targetCardinality="1..1"/>
   </ClassDiagramRelations>
 </ClassDiagram>
