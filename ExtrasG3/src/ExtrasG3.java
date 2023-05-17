@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package extrasg3;
+package Ej4;
 
 /**
  *
@@ -15,7 +15,7 @@ public class ExtrasG3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Dado dado1 = new Dado();
+        /*Dado dado1 = new Dado();
         Dado dado2 = new Dado();
         Dado dado3 = new Dado();
 
@@ -38,7 +38,7 @@ public class ExtrasG3 {
         pepe.tirarDado(dado4);
         pepe.tirarDado(dado5);
         pepe.tirarDado(dado6);
-System.out.println("Clasificación de " + pepe.getNombre() + ": " + pepe.verClasificacion());
+        System.out.println("Clasificación de " + pepe.getNombre() + ": " + pepe.verClasificacion());
         // f) Al finalizar mostrar de los 2 jugadores el nombre que obtuvo la mayor clasificación.
         int clasificacionPocho = pocho.verClasificacion();
         int clasificacionPepe = pepe.verClasificacion();
@@ -49,8 +49,23 @@ System.out.println("Clasificación de " + pepe.getNombre() + ": " + pepe.verClas
             System.out.println("El ganador es " + pepe.getNombre());
         } else {
             System.out.println("Ambos jugadores tienen la misma clasificación.");
-        }
+        }*/
+
+        Jugador jugador1 = new Jugador(1);
+        Jugador jugador2 = new Jugador(2);
+        RevolverAgua revolver = new RevolverAgua();
+
+        Juego juego = new Juego();
+        juego.llenarJuego(jugador1, jugador2, revolver);
+
+        revolver.llenarRevolver();
+        System.out.println(revolver);
+
+        juego.ronda();
+
+        Jugador jugadorMojado = jugador1.estaMojado() ? jugador1 : jugador2;
+        System.out.println("El jugador mojado es: " + jugadorMojado);
     }
-    
-    
 }
+
+
