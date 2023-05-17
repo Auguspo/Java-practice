@@ -1,49 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<ClassDiagram name="ExtrasG3">
+<ClassDiagram name="Ej4">
   <ClassDiagramComponents>
-    <Class name="Jugador" package="extrasg3" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="Juego" package="Ej4" visibility="public" xPosition="20.0" yPosition="20.0">
       <Fields>
-        <Field name="nombre" type="String" visibility="private"/>
-        <Field name="clasificacion" type="int" visibility="private"/>
+        <Field name="jugador1" type="Jugador" visibility="private"/>
+        <Field name="jugador2" type="Jugador" visibility="private"/>
+        <Field name="revolver" type="RevolverAgua" visibility="private"/>
       </Fields>
-      <Constructors>
-        <Constructor visibility="package">
-          <Argument type="String" name="nombre"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="tirarDado" returnType="Dado" visibility="public">
-          <Argument type="Dado" name="dado"/>
-        </Method>
-        <Method name="verClasificacion" returnType="int" visibility="public"/>
-        <Method name="getNombre" returnType="String" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="ExtrasG3" package="extrasg3" visibility="public" xPosition="1520.0" yPosition="20.0">
-      <Fields/>
       <Constructors/>
       <Methods>
-        <Method name="main" returnType="String[]" visibility="public" isStatic="true">
-          <Argument type="String[]" name="args"/>
+        <Method name="llenarJuego" returnType="void" visibility="public">
+          <Argument type="Jugador" name="jugador1"/>
+          <Argument type="Jugador" name="jugador2"/>
+          <Argument type="RevolverAgua" name="revolver"/>
         </Method>
+        <Method name="ronda" returnType="void" visibility="public"/>
+        <Method name="obtenerJugadorActual" returnType="Jugador" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="RevolverAgua" package="" visibility="public" xPosition="31.0" yPosition="30.0">
-      <Fields>
-        <Field name="posicionActual" type="int" visibility="private"/>
-        <Field name="posicionAgua" type="int" visibility="private"/>
-      </Fields>
-      <Constructors>
-        <Constructor visibility="public"/>
-      </Constructors>
-      <Methods>
-        <Method name="mojar" returnType="boolean" visibility="public"/>
-        <Method name="siguienteChorro" returnType="void" visibility="public"/>
-        <Method name="toString" returnType="String" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="Jugador" package="" visibility="public" xPosition="42.0" yPosition="276.0">
+    <Class name="Jugador" package="Ej4" visibility="public" xPosition="154.0" yPosition="395.0">
       <Fields>
         <Field name="id" type="int" visibility="private"/>
         <Field name="nombre" type="String" visibility="private"/>
@@ -59,27 +35,29 @@
           <Argument type="RevolverAgua" name="revolver"/>
         </Method>
         <Method name="estaMojado" returnType="boolean" visibility="public"/>
-        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="getNombre" returnType="String" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Juego" package="" visibility="public" xPosition="266.0" yPosition="49.0">
+    <Class name="RevolverAgua" package="Ej4" visibility="public" xPosition="652.0" yPosition="41.0">
       <Fields>
-        <Field name="jugador1" type="Jugador" visibility="private"/>
-        <Field name="revolver" type="RevolverAgua" visibility="private"/>
-        <Field name="jugador2" type="Jugador" visibility="private"/>
+        <Field name="posicionActual" type="int" visibility="private"/>
+        <Field name="posicionAgua" type="int" visibility="private"/>
       </Fields>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="Jugador" name="jugador1"/>
-          <Argument type="Jugador" name="jugador2"/>
-          <Argument type="RevolverAgua" name="revolver"/>
-        </Constructor>
-      </Constructors>
+      <Constructors/>
       <Methods>
-        <Method name="ronda" returnType="void" visibility="public"/>
-        <Method name="obtenerJugadorActual" returnType="Jugador" visibility="public"/>
+        <Method name="llenarRevolver" returnType="void" visibility="public"/>
+        <Method name="mojar" returnType="boolean" visibility="public"/>
+        <Method name="siguienteChorro" returnType="void" visibility="public"/>
+        <Method name="aTexto" returnType="String" visibility="public"/>
       </Methods>
     </Class>
   </ClassDiagramComponents>
-  <ClassDiagramRelations/>
+  <ClassDiagramRelations>
+    <UseRelation source="Ej4.Juego" target="Ej4.RevolverAgua" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Ej4.Juego" target="Ej4.Jugador" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jugador2" source="Ej4.Juego" target="Ej4.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="revolver" source="Ej4.Juego" target="Ej4.RevolverAgua" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Ej4.Jugador" target="Ej4.RevolverAgua" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="jugador1" source="Ej4.Juego" target="Ej4.Jugador" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
 </ClassDiagram>

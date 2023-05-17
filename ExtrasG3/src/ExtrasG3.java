@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ej4;
+package Ej3;
 
 /**
  *
@@ -51,7 +51,7 @@ public class ExtrasG3 {
             System.out.println("Ambos jugadores tienen la misma clasificación.");
         }*/
 
-        Jugador jugador1 = new Jugador(1);
+       /* Jugador jugador1 = new Jugador(1);
         Jugador jugador2 = new Jugador(2);
         RevolverAgua revolver = new RevolverAgua();
 
@@ -64,7 +64,23 @@ public class ExtrasG3 {
         juego.ronda();
 
         Jugador jugadorMojado = jugador1.estaMojado() ? jugador1 : jugador2;
-        System.out.println("El jugador mojado es: " + jugadorMojado);
+        System.out.println("El jugador mojado es: " + jugadorMojado);*/
+       
+        Producto producto1 = new Producto("Producto 1", 100.0, 10, "Lácteo");
+        Producto producto2 = new Producto("Producto 2", 200.0, 5, "Limpieza");
+        Producto producto3 = new Producto("Producto 3", 300.0, 3, "Otro tipo");
+
+        // b) Crear un Cliente y un Vendedor.
+        Cliente cliente = new Cliente("Nombre del Cliente", "San Luis");
+        Vendedor vendedor = new Vendedor("Nombre del Vendedor");
+
+        // c) Crear una Venta del Vendedor creado en el punto b para el Cliente creado en el punto b y con los 3 productos del punto a.
+        Producto[] productosVenta = {producto1, producto2, producto3};
+        Venta venta = new Venta(cliente, vendedor, productosVenta);
+
+        // d) Solicitar a la Venta que informe el total.
+        double totalVenta = venta.calcularTotal();
+        System.out.println("El total de la venta es: $" + totalVenta);
     }
 }
 
