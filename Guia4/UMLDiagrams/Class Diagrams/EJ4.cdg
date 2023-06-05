@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EJ4">
+  <ClassDiagramComponents>
+    <Class name="Guerrero" package="EJ4" visibility="public" xPosition="10.0" yPosition="124.0">
+      <Fields>
+        <Field name="caballo" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="caballo"/>
+          <Argument type="Position" name="ubicacion"/>
+          <Argument type="String" name="nick"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="avanzar" returnType="void" visibility="public"/>
+        <Method name="disparar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Personaje" package="EJ4" visibility="public" isAbstract="true" xPosition="452.0" yPosition="20.0">
+      <Fields>
+        <Field name="ubicacion" type="Position" visibility="private"/>
+        <Field name="nick" type="String" visibility="private"/>
+        <Field name="vidas" type="int" visibility="private"/>
+        <Field name="energia" type="int" visibility="private"/>
+        <Field name="orientacion" type="char" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Position" name="ubicacion"/>
+          <Argument type="String" name="nick"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getUbicacion" returnType="Position" visibility="public"/>
+        <Method name="getNick" returnType="String" visibility="public"/>
+        <Method name="getVidas" returnType="int" visibility="public"/>
+        <Method name="getEnergia" returnType="int" visibility="public"/>
+        <Method name="getOrientacion" returnType="char" visibility="public"/>
+        <Method name="disparar" returnType="void" visibility="public"/>
+        <Method name="girar" returnType="void" visibility="public"/>
+        <Method name="avanzar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Position" package="EJ4" visibility="public" xPosition="904.0" yPosition="95.0">
+      <Fields>
+        <Field name="x" type="int" visibility="private"/>
+        <Field name="y" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getX" returnType="int" visibility="public"/>
+        <Method name="setX" returnType="void" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+        <Method name="getY" returnType="int" visibility="public"/>
+        <Method name="setY" returnType="void" visibility="public">
+          <Argument type="int" name="y"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="EJ4.Guerrero" target="EJ4.Personaje"/>
+    <UseRelation source="EJ4.Personaje" target="EJ4.Position" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ubicacion" source="EJ4.Personaje" target="EJ4.Position" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

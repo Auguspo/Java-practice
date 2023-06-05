@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="Circulo" package="" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="radio" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="radio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calcularArea" returnType="double" visibility="public"/>
+        <Method name="calcularPerimetro" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Rectangulo" package="" visibility="public" xPosition="93.0" yPosition="338.0">
+      <Fields>
+        <Field name="base" type="double" visibility="private"/>
+        <Field name="altura" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="base"/>
+          <Argument type="double" name="altura"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calcularArea" returnType="double" visibility="public"/>
+        <Method name="calcularPerimetro" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="calculosFormas" package="" visibility="public" xPosition="345.0" yPosition="44.0">
+      <Methods>
+        <Method name="calcularArea" returnType="double" visibility="public"/>
+        <Method name="calcularPerimetro" returnType="double" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Circulo" target="calculosFormas"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Rectangulo" target="calculosFormas"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
