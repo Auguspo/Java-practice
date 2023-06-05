@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EJ2">
+  <ClassDiagramComponents>
+    <Class name="Auto" package="EJ2" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Camion" package="EJ2" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Camioneta" package="EJ2" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Vehiculo" package="EJ2" visibility="public" xPosition="452.0" yPosition="255.0">
+      <Fields>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="patente" type="String" visibility="private"/>
+        <Field name="tipoCombustible" type="String" visibility="private"/>
+        <Field name="precioCombustible" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="untitledMethod" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Viaje" package="EJ2" visibility="public" xPosition="831.0" yPosition="38.0">
+      <Fields>
+        <Field name="lugarOrigen" type="String" visibility="private"/>
+        <Field name="lugarDestino" type="String" visibility="private"/>
+        <Field name="distancia" type="int" visibility="private"/>
+        <Field name="tipoCombustible" type="String" visibility="private"/>
+        <Field name="vehiculo" type="Vehiculo" visibility="private"/>
+        <Field name="cantidadPeajes" type="int" visibility="private"/>
+        <Field name="kmCiudadOrigen" type="int" visibility="private"/>
+        <Field name="kmCiudadDestino" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="EJ2.Camion" target="EJ2.Vehiculo"/>
+    <IsRelation name="is" source="EJ2.Camioneta" target="EJ2.Vehiculo"/>
+    <IsRelation name="is" source="EJ2.Auto" target="EJ2.Vehiculo"/>
+    <HasRelation name="vehiculo" source="EJ2.Viaje" target="EJ2.Vehiculo" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
