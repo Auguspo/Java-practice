@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EJ1">
+  <ClassDiagramComponents>
+    <Class name="Alquiler" package="EJ1" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="nombreCliente" type="String" visibility="private"/>
+        <Field name="documentoCliente" type="int" visibility="private"/>
+        <Field name="fechaAlquiler" type="LocalDate" visibility="private"/>
+        <Field name="fechaDevolucion" type="LocalDate" visibility="private"/>
+        <Field name="posicionAmarre" type="int" visibility="private"/>
+        <Field name="barco" type="Barco" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Barco" package="EJ1" visibility="public" xPosition="240.0" yPosition="141.0">
+      <Fields>
+        <Field name="matricula" type="String" visibility="private"/>
+        <Field name="eslora" type="double" visibility="private"/>
+        <Field name="anoFabricacion" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularModulo" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="BarcoMotor" package="EJ1" visibility="public" xPosition="467.0" yPosition="20.0">
+      <Fields>
+        <Field name="potenciaCV" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Velero" package="EJ1" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="numeroMastiles" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Yate" package="EJ1" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="potenciaCV" type="int" visibility="private"/>
+        <Field name="numeroCamarotes" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="barco" source="EJ1.Alquiler" target="EJ1.Barco" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="EJ1.Yate" target="EJ1.Barco"/>
+    <IsRelation name="is" source="EJ1.BarcoMotor" target="EJ1.Barco"/>
+    <IsRelation name="is" source="EJ1.Velero" target="EJ1.Barco"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
