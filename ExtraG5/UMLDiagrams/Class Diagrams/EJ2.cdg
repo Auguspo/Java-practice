@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="EJ2">
+  <ClassDiagramComponents>
+    <Class name="Dato" package="EJ2" visibility="public" xPosition="62.0" yPosition="37.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="milimetros" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="RegistroLluvias" package="EJ2" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="registros" type="double[][]" visibility="private"/>
+        <Field name="localidades" type="String[]" visibility="private"/>
+        <Field name="meses" type="String[]" visibility="private"/>
+        <Field name="datos" type="Dato[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="agregarDato" returnType="String" visibility="public">
+          <Argument type="String" name="localidad"/>
+          <Argument type="String" name="mes"/>
+          <Argument type="double" name="promedioLluvias"/>
+          <Argument type="String" name="persona"/>
+        </Method>
+        <Method name="obtenerPromedioMasAlto" returnType="String" visibility="public">
+          <Argument type="String" name="localidad"/>
+        </Method>
+        <Method name="obtenerPersonaQueRegistro" returnType="String" visibility="public">
+          <Argument type="String" name="localidad"/>
+          <Argument type="String" name="mes"/>
+        </Method>
+        <Method name="obtenerIndiceLocalidad" returnType="String" visibility="public">
+          <Argument type="String" name="localidad"/>
+        </Method>
+        <Method name="obtenerIndiceMes" returnType="String" visibility="public">
+          <Argument type="String" name="mes"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

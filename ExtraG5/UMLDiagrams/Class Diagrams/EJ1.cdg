@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ExtraG5">
+  <ClassDiagramComponents>
+    <Class name="Pila" package="" visibility="public" xPosition="52.0" yPosition="36.0">
+      <Fields>
+        <Field name="tope" type="int" visibility="private"/>
+        <Field name="elementos" type="String[]" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="agregar" returnType="void" visibility="public">
+          <Argument type="String" name="elem"/>
+        </Method>
+        <Method name="verTope" returnType="String" visibility="public"/>
+        <Method name="quitar" returnType="String" visibility="public"/>
+        <Method name="pilaVacia" returnType="boolean" visibility="public"/>
+        <Method name="pilaLlena" returnType="boolean" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
