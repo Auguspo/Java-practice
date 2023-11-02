@@ -1,4 +1,4 @@
-package universidadejemplo;
+package universidadejemplo.Vistas;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
