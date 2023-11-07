@@ -20,16 +20,8 @@ public class UniversidadEjemplo {
 
             Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/universidadejemplo", "root", "");
 
-            String sql = "insert into alumno (dni, apellido, nombre, fechaNacimiento, estado)"
-                    + "values(52745628,'Lopez','Juan', ' " + LocalDate.of(2000, Month.AUGUST, 29)
-                    + "',true);";
-
-            PreparedStatement ps = conn.prepareStatement(sql);
-            int filas = ps.executeUpdate();
-            if (filas > 0) {
-                JOptionPane.showMessageDialog(null, "Materia agregada exitosamente");
-
-            }
+            
+          
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Debe agregar los driver al proyecto!!!");
         } catch (SQLException ex) {

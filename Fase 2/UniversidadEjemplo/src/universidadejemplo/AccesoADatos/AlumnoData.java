@@ -155,20 +155,21 @@ public class AlumnoData {
 
     }
 
-    public void eliminarAlumno(int id) {
-
+ public void eliminarAlumnoPorDni(int dni) {
         try {
-            String sql = "UPDATE alumno SET estado = 0 WHERE idAlumno = ? ";
+            String sql = "UPDATE alumno SET estado = 0 WHERE dni = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setInt(1, dni);
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, " Se eliminó el alumno.");
+                JOptionPane.showMessageDialog(null, "Se eliminó el alumno con DNI: " + dni);
+            } else {
+                JOptionPane.showMessageDialog(null, "El alumno con DNI: " + dni + " no existe");
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Alumno: " + e.getMessage());
         }
     }
 }
