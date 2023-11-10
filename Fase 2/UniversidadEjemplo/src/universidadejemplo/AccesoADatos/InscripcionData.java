@@ -41,19 +41,19 @@ public class InscripcionData {
         List<Inscripcion> inscripciones = new ArrayList<>();
         try {
             String sql = "SELECT idInscripcion, idAlumno, idMateria, nota FROM inscripcion";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int idInscripcion = rs.getInt("idInscripcion");
-                int idAlumno = rs.getInt("idAlumno");
-                int idMateria = rs.getInt("idMateria");
-                double nota = rs.getDouble("nota");
-                Alumno alumno = aluData.buscarAlumno(idAlumno);
-                Materia materia = matData.buscarMateria(idMateria);
-                Inscripcion inscripcion = new Inscripcion(idInscripcion, alumno, materia, nota);
-                inscripciones.add(inscripcion);
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int idInscripcion = rs.getInt("idInscripcion");
+                    int idAlumno = rs.getInt("idAlumno");
+                    int idMateria = rs.getInt("idMateria");
+                    double nota = rs.getDouble("nota");
+                    Alumno alumno = aluData.buscarAlumno(idAlumno);
+                    Materia materia = matData.buscarMateria(idMateria);
+                    Inscripcion inscripcion = new Inscripcion(idInscripcion, alumno, materia, nota);
+                    inscripciones.add(inscripcion);
+                }
             }
-            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al obtener inscripciones: " + ex.getMessage());
         }
@@ -109,24 +109,25 @@ public class InscripcionData {
         return materias;
     }
 
-    public List<Materia> obtenerMateriasNOCursadas(int idAlumno) {
-        List<Materia> materiasNoCursadas = new ArrayList<>();
+   public List<Materia> obtenerMateriasNOCursadas(int idAlumno) {
+    List<Materia> materiasNoCursadas = new ArrayList<>();
 
-        // Obtener todas las materias disponibles
-        List<Materia> todasLasMaterias = matData.listarMaterias();
+    // Obtener todas las materias disponibles
+    List<Materia> todasLasMaterias = matData.listarMaterias();
 
-        // Obtener las materias en las que el estudiante ya se ha inscrito
-        List<Materia> materiasCursadas = obtenerMateriasCursadas(idAlumno);
+    // Obtener las materias en las que el estudiante ya se ha inscrito
+    List<Materia> materiasCursadas = obtenerMateriasCursadas(idAlumno);
 
-        // Filtrar las materias no cursadas
-        for (Materia materia : todasLasMaterias) {
-            if (!materiasCursadas.contains(materia)) {
-                materiasNoCursadas.add(materia);
-            }
+    // Filtrar las materias no cursadas
+    for (Materia materia : todasLasMaterias) {
+        if (!materiasCursadas.contains(materia)) {
+            materiasNoCursadas.add(materia);
         }
-
-        return materiasNoCursadas;
     }
+
+    return materiasNoCursadas;
+}
+
 
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
         try {

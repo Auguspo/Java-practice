@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-11-2023 a las 02:58:06
+-- Tiempo de generación: 10-11-2023 a las 20:52:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -29,68 +29,68 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alumno` (
   `idAlumno` int(11) NOT NULL,
-  `dni` int(11) NOT NULL,
+  `dni` int(10) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `fechaNacimiento` date NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `activo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `alumno`
 --
 
-INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`, `estado`) VALUES
-(4, 12345678, 'López', 'Juan', '1990-05-15', 1),
-(5, 23456789, 'Gómez', 'María', '1992-09-22', 0),
-(6, 34567890, 'Martínez', 'Carlos', '1995-03-10', 1),
-(7, 45678901, 'Rodríguez', 'Laura', '1988-11-30', 0),
-(8, 56789012, 'Pérez', 'Andrés', '1997-07-14', 1),
-(9, 67890123, 'González', 'Ana', '1993-02-05', 0),
-(10, 78901234, 'Fernández', 'Pedro', '1994-06-20', 1),
-(11, 89012345, 'Díaz', 'Sofía', '1991-12-03', 0),
-(12, 90123456, 'López', 'Miguel', '1996-08-25', 1),
-(13, 12345677, 'Sánchez', 'Elena', '1989-04-17', 0),
-(14, 23456788, 'Romero', 'Lucas', '1998-01-28', 1),
-(15, 34567899, 'Gómez', 'Carla', '1990-07-09', 0),
-(16, 45678910, 'Martínez', 'Daniel', '1992-03-18', 1),
-(17, 56789011, 'Rodríguez', 'Luis', '1994-10-12', 0),
-(18, 67890122, 'Pérez', 'Silvia', '1997-06-08', 1),
-(19, 78901233, 'González', 'Javier', '1987-09-05', 0),
-(20, 89012344, 'Fernández', 'Lorena', '1991-11-26', 1),
-(21, 90123455, 'Díaz', 'Manuel', '1995-05-01', 0),
-(22, 12345676, 'López', 'Carmen', '1988-12-14', 1),
-(23, 23456787, 'Sánchez', 'Ricardo', '1993-10-29', 0),
-(24, 34567898, 'Romero', 'Paula', '1996-02-21', 1),
-(25, 45678909, 'Gómez', 'Felipe', '1998-04-06', 0),
-(26, 56789010, 'Martínez', 'Alicia', '1990-06-16', 1),
-(27, 67890121, 'Rodríguez', 'Diego', '1994-08-08', 0),
-(28, 78901232, 'Pérez', 'Natalia', '1992-01-25', 1),
-(29, 89012343, 'González', 'Rosa', '1997-03-30', 0),
-(30, 90123454, 'Fernández', 'Juan', '1989-09-03', 1),
-(31, 12345675, 'Díaz', 'Isabel', '1993-04-07', 0),
-(32, 23456786, 'López', 'Pablo', '1995-01-19', 1),
-(33, 34567897, 'Sánchez', 'Lourdes', '1991-07-02', 0),
-(34, 45678908, 'Romero', 'Eduardo', '1996-05-26', 1),
-(35, 56789009, 'Gómez', 'Marcela', '1998-11-15', 0),
-(36, 67890120, 'Martínez', 'Hugo', '1992-08-09', 1),
-(37, 78901231, 'Rodríguez', 'Liliana', '1990-03-12', 0),
-(38, 89012342, 'Pérez', 'Roberto', '1988-12-30', 1),
-(39, 90123453, 'González', 'Cecilia', '1994-04-18', 0),
-(40, 12345674, 'Fernández', 'Federico', '1997-02-23', 1),
-(41, 23456785, 'Díaz', 'Marta', '1993-06-14', 0),
-(42, 34567896, 'López', 'Rafael', '1995-09-28', 1),
-(43, 45678907, 'Sánchez', 'Victoria', '1990-11-08', 0),
-(44, 56789008, 'Romero', 'Jorge', '1992-12-22', 1),
-(45, 67890119, 'Gómez', 'Alejandra', '1989-08-25', 0),
-(46, 78901230, 'Martínez', 'Samuel', '1994-01-10', 1),
-(47, 89012341, 'Rodríguez', 'Gloria', '1996-07-05', 0),
-(48, 90123452, 'Pérez', 'Ramón', '1998-03-02', 1),
-(49, 12345673, 'González', 'Mariana', '1991-04-19', 0),
-(50, 23456784, 'Fernández', 'Eva', '1993-11-27', 1),
-(51, 34567895, 'Díaz', 'Roberto', '1988-06-08', 0),
-(52, 45678906, 'López', 'Clara', '1995-10-14', 1),
-(53, 56789007, 'Sánchez', 'Antonio', '1997-09-06', 0);
+INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaNacimiento`, `activo`) VALUES
+(4, 0, 'López', 'Juan', '1990-05-15', 1),
+(5, 0, 'Gómez', 'María', '1992-09-22', 0),
+(6, 0, 'Martínez', 'Carlos', '1995-03-10', 1),
+(7, 0, 'Rodríguez', 'Laura', '1988-11-30', 0),
+(8, 0, 'Pérez', 'Andrés', '1997-07-14', 1),
+(9, 0, 'González', 'Ana', '1993-02-05', 0),
+(10, 0, 'Fernández', 'Pedro', '1994-06-20', 1),
+(11, 0, 'Díaz', 'Sofía', '1991-12-03', 0),
+(12, 0, 'López', 'Miguel', '1996-08-25', 1),
+(13, 0, 'Sánchez', 'Elena', '1989-04-17', 0),
+(14, 0, 'Romero', 'Lucas', '1998-01-28', 1),
+(15, 0, 'Gómez', 'Carla', '1990-07-09', 0),
+(16, 0, 'Martínez', 'Daniel', '1992-03-18', 1),
+(17, 0, 'Rodríguez', 'Luis', '1994-10-12', 0),
+(18, 0, 'Pérez', 'Silvia', '1997-06-08', 1),
+(19, 0, 'González', 'Javier', '1987-09-05', 0),
+(20, 0, 'Fernández', 'Lorena', '1991-11-26', 1),
+(21, 0, 'Díaz', 'Manuel', '1995-05-01', 0),
+(22, 0, 'López', 'Carmen', '1988-12-14', 1),
+(23, 0, 'Sánchez', 'Ricardo', '1993-10-29', 0),
+(24, 0, 'Romero', 'Paula', '1996-02-21', 1),
+(25, 0, 'Gómez', 'Felipe', '1998-04-06', 0),
+(26, 0, 'Martínez', 'Alicia', '1990-06-16', 1),
+(27, 0, 'Rodríguez', 'Diego', '1994-08-08', 0),
+(28, 0, 'Pérez', 'Natalia', '1992-01-25', 1),
+(29, 0, 'González', 'Rosa', '1997-03-30', 0),
+(30, 0, 'Fernández', 'Juan', '1989-09-03', 1),
+(31, 0, 'Díaz', 'Isabel', '1993-04-07', 0),
+(32, 0, 'López', 'Pablo', '1995-01-19', 1),
+(33, 0, 'Sánchez', 'Lourdes', '1991-07-02', 0),
+(34, 0, 'Romero', 'Eduardo', '1996-05-26', 1),
+(35, 0, 'Gómez', 'Marcela', '1998-11-15', 0),
+(36, 0, 'Martínez', 'Hugo', '1992-08-09', 1),
+(37, 0, 'Rodríguez', 'Liliana', '1990-03-12', 0),
+(38, 0, 'Pérez', 'Roberto', '1988-12-30', 1),
+(39, 0, 'González', 'Cecilia', '1994-04-18', 0),
+(40, 0, 'Fernández', 'Federico', '1997-02-23', 1),
+(41, 0, 'Díaz', 'Marta', '1993-06-14', 0),
+(42, 0, 'López', 'Rafael', '1995-09-28', 1),
+(43, 0, 'Sánchez', 'Victoria', '1990-11-08', 0),
+(44, 0, 'Romero', 'Jorge', '1992-12-22', 1),
+(45, 0, 'Gómez', 'Alejandra', '1989-08-25', 0),
+(46, 0, 'Martínez', 'Samuel', '1994-01-10', 1),
+(47, 0, 'Rodríguez', 'Gloria', '1996-07-05', 0),
+(48, 0, 'Pérez', 'Ramón', '1998-03-02', 1),
+(49, 0, 'González', 'Mariana', '1991-04-19', 0),
+(50, 0, 'Fernández', 'Eva', '1993-11-27', 1),
+(51, 0, 'Díaz', 'Roberto', '1988-06-08', 0),
+(52, 0, 'López', 'Clara', '1995-10-14', 1),
+(53, 0, 'Sánchez', 'Antonio', '1997-09-06', 0);
 
 -- --------------------------------------------------------
 
@@ -105,6 +105,22 @@ CREATE TABLE `inscripcion` (
   `idMateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`idInscripto`, `nota`, `idAlumno`, `idMateria`) VALUES
+(131, 85, 4, 7),
+(132, 72, 5, 8),
+(133, 94, 6, 9),
+(134, 65, 7, 10),
+(135, 78, 8, 11),
+(136, 91, 9, 12),
+(137, 89, 10, 13),
+(138, 76, 11, 14),
+(139, 93, 12, 15),
+(140, 80, 13, 16);
+
 -- --------------------------------------------------------
 
 --
@@ -115,14 +131,14 @@ CREATE TABLE `materia` (
   `idMateria` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `año` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL
+  `activo` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `materia`
 --
 
-INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
+INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `activo`) VALUES
 (7, 'Matemáticas', 1, 1),
 (8, 'Ciencias Sociales', 2, 0),
 (9, 'Lengua y Literatura', 3, 1),
@@ -142,8 +158,7 @@ INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
 -- Indices de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  ADD PRIMARY KEY (`idAlumno`),
-  ADD UNIQUE KEY `dni` (`dni`);
+  ADD PRIMARY KEY (`idAlumno`);
 
 --
 -- Indices de la tabla `inscripcion`
@@ -157,8 +172,7 @@ ALTER TABLE `inscripcion`
 -- Indices de la tabla `materia`
 --
 ALTER TABLE `materia`
-  ADD PRIMARY KEY (`idMateria`),
-  ADD UNIQUE KEY `nombre` (`nombre`);
+  ADD PRIMARY KEY (`idMateria`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -174,7 +188,7 @@ ALTER TABLE `alumno`
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idInscripto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`

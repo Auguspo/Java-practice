@@ -9,6 +9,7 @@ import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.Entidades.Alumno;
 
 public class AlumnoForm {
+
     private JPanel mainPanel;
     private JTextField dniField;
     private JTextField apellidoField;
@@ -119,7 +120,10 @@ public class AlumnoForm {
         salirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Cerrar esta ventana o realizar otra acción de salida
+                int confirm = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que deseas salir?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
+                if (confirm == JOptionPane.YES_OPTION) {
+                    System.exit(0); // Cierra la aplicación
+                }
             }
         });
     }

@@ -116,6 +116,7 @@ public class MateriaData {
         List<Materia> materias = new ArrayList<>();
         try {
             String sql = "SELECT idMateria, nombre, año, activo FROM materia";
+
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -135,4 +136,47 @@ public class MateriaData {
 
         return materias;
     }
+
+    public List<String> listarNombresMaterias() {
+        List<String> nombresMaterias = new ArrayList<>();
+
+        try {
+            String sql = "SELECT nombre FROM materia";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                String nombreMateria = rs.getString("nombre");
+                nombresMaterias.add(nombreMateria);
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener nombres de materias: " + ex.getMessage());
+        }
+
+        return nombresMaterias;
+    }
+
+    public int obtenerIdMateriaPorNombre(String nombreMateria) {
+        int idMateria = -1; // Valor por defecto si no se encuentra la materia
+
+        try {
+            String sql = "SELECT idMateria FROM materia WHERE nombre = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombreMateria);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                idMateria = rs.getInt("idMateria");
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener ID de la materia: " + ex.getMessage());
+        }
+
+        return idMateria;
+    }
+
 }

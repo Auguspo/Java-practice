@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
 
 public class MateriaList {
@@ -59,12 +60,11 @@ public class MateriaList {
         return mainPanel;
     }
 
-    private List<Materia> obtenerMateriasDesdeBD() {
-        // Lógica para obtener la lista de materias desde la base de datos
-        // ...
-
-        return null; // Reemplazar esto con la lista real de materias
-    }
+   private List<Materia> obtenerMateriasDesdeBD() {
+    // Lógica para obtener la lista de materias desde la base de datos
+    MateriaData materiaData = new MateriaData();
+    return materiaData.listarMaterias();
+}
 
     private void actualizarTabla(List<Materia> materias) {
         // Limpiar la tabla antes de actualizar

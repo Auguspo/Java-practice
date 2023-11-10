@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import universidadejemplo.Vistas.Administracion.InscripcionForm;
 import universidadejemplo.Vistas.Administracion.NotasForm;
+import universidadejemplo.Vistas.Alumnos.AlumnoForm;
 import universidadejemplo.Vistas.Consultas.AlumnosPorMateria;
 import universidadejemplo.Vistas.Materias.MateriaForm;
 
@@ -29,6 +30,8 @@ public class MainWindow {
                 JFrame formularioAlumnoFrame = new JFrame("Formulario de Alumno");
                 formularioAlumnoFrame.setLayout(new GridLayout(7, 2));
 
+                AlumnoForm alumnoForm = new AlumnoForm();
+                formularioAlumnoFrame.add(alumnoForm.getMainPanel());
                 // Implementa la lógica del formulario de alumno aquí
                 formularioAlumnoFrame.pack();
                 formularioAlumnoFrame.setVisible(true);
