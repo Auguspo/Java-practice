@@ -20,6 +20,9 @@ public class InscripcionData {
     private AlumnoData aluData;
 
     public InscripcionData() {
+        con = Conexion.getConexion();
+        matData = new MateriaData();  // Added initialization
+        aluData = new AlumnoData();  // Added initialization
     }
 
     public void guardarInscripcion(Inscripcion insc) {
@@ -109,25 +112,24 @@ public class InscripcionData {
         return materias;
     }
 
-   public List<Materia> obtenerMateriasNOCursadas(int idAlumno) {
-    List<Materia> materiasNoCursadas = new ArrayList<>();
+    public List<Materia> obtenerMateriasNOCursadas(int idAlumno) {
+        List<Materia> materiasNoCursadas = new ArrayList<>();
 
-    // Obtener todas las materias disponibles
-    List<Materia> todasLasMaterias = matData.listarMaterias();
+        // Obtener todas las materias disponibles
+        List<Materia> todasLasMaterias = matData.listarMaterias();
 
-    // Obtener las materias en las que el estudiante ya se ha inscrito
-    List<Materia> materiasCursadas = obtenerMateriasCursadas(idAlumno);
+        // Obtener las materias en las que el estudiante ya se ha inscrito
+        List<Materia> materiasCursadas = obtenerMateriasCursadas(idAlumno);
 
-    // Filtrar las materias no cursadas
-    for (Materia materia : todasLasMaterias) {
-        if (!materiasCursadas.contains(materia)) {
-            materiasNoCursadas.add(materia);
+        // Filtrar las materias no cursadas
+        for (Materia materia : todasLasMaterias) {
+            if (!materiasCursadas.contains(materia)) {
+                materiasNoCursadas.add(materia);
+            }
         }
+
+        return materiasNoCursadas;
     }
-
-    return materiasNoCursadas;
-}
-
 
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria) {
         try {
@@ -139,9 +141,7 @@ public class InscripcionData {
 
             if (fila == 1) {
                 JOptionPane.showMessageDialog(null, "Inscripción eliminada con éxito.");
-            } else {
-                JOptionPane.showMessageDialog(null, "La inscripción no existe.");
-            }
+            } 
 
             ps.close();
         } catch (SQLException ex) {

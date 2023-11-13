@@ -4,9 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Materia;
 
 public class MateriaForm {
+
     private JPanel mainPanel;
     private JTextField codigoField;
     private JTextField nombreField;
@@ -40,8 +42,25 @@ public class MateriaForm {
                 Materia materia = new Materia(codigo, nombre, año, true); // Activo se establece en "true"
 
                 // Lógica para guardar la materia
-                // ...
+                MateriaData materiaData = new MateriaData();
+                materiaData.guardarMateria(materia);
 
+                // Cerrar la ventana del formulario después de guardar
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+                frame.dispose();
+            }
+        });
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener los datos del formulario y guardar la materia
+                int codigo = Integer.parseInt(codigoField.getText());
+                String nombre = nombreField.getText();
+                int año = Integer.parseInt(añoField.getText());
+                Materia materia = new Materia(codigo, nombre, año, true); // Activo se establece en "true"
+
+                // Lógica para guardar la materia
+                // ...
                 // Cerrar la ventana del formulario después de guardar
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
                 frame.dispose();

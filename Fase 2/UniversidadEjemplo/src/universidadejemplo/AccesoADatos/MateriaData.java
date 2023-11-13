@@ -19,7 +19,7 @@ public class MateriaData {
 
     public Materia guardarMateria(Materia materia) {
         try {
-            String sql = "INSERT INTO materia (nombre, año, activo) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO materia (nombre, año, estado) VALUES (?, ?, ?)";
             PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
@@ -43,7 +43,7 @@ public class MateriaData {
     public Materia buscarMateria(int id) {
         Materia materia = null;
         try {
-            String sql = "SELECT nombre, año, activo FROM materia WHERE idMateria = ?";
+            String sql = "SELECT nombre, año, estado FROM materia WHERE idMateria = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -53,7 +53,7 @@ public class MateriaData {
                 materia.setIdMateria(id);
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                materia.setActivo(rs.getBoolean("activo"));
+                materia.setActivo(rs.getBoolean("estado"));
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontró la materia.");
             }
@@ -68,7 +68,7 @@ public class MateriaData {
 
     public Materia modificarMateria(Materia materia) {
         try {
-            String sql = "UPDATE materia SET nombre = ?, año = ?, activo = ? WHERE idMateria = ?";
+            String sql = "UPDATE materia SET nombre = ?, año = ?, estado = ? WHERE idMateria = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnioMateria());
@@ -115,7 +115,7 @@ public class MateriaData {
     public List<Materia> listarMaterias() {
         List<Materia> materias = new ArrayList<>();
         try {
-            String sql = "SELECT idMateria, nombre, año, activo FROM materia";
+            String sql = "SELECT idMateria, nombre, año, estado FROM materia";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -125,7 +125,7 @@ public class MateriaData {
                 materia.setIdMateria(rs.getInt("idMateria"));
                 materia.setNombre(rs.getString("nombre"));
                 materia.setAnioMateria(rs.getInt("año"));
-                materia.setActivo(rs.getBoolean("activo"));
+                materia.setActivo(rs.getBoolean("estado"));
                 materias.add(materia);
             }
 
@@ -134,6 +134,27 @@ public class MateriaData {
             JOptionPane.showMessageDialog(null, "Error al listar las materias: " + ex.getMessage());
         }
 
+        return materias;
+    }
+
+    public List<Materia> obtenerTodasLasMaterias() {
+        List<Materia> materias = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM materia";
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int idMateria = rs.getInt("idMateria");
+                    String nombre = rs.getString("nombre");
+                    int anioMateria = rs.getInt("año");
+                    boolean activo = rs.getBoolean("estado");
+                    Materia materia = new Materia(idMateria, nombre, anioMateria, activo);
+                    materias.add(materia);
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return materias;
     }
 
@@ -179,4 +200,5 @@ public class MateriaData {
         return idMateria;
     }
 
+  
 }

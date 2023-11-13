@@ -4,10 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import universidadejemplo.AccesoADatos.AlumnoData;
+import universidadejemplo.AccesoADatos.InscripcionData;
+import universidadejemplo.AccesoADatos.MateriaData;
+import universidadejemplo.Entidades.Alumno;
+import universidadejemplo.Entidades.Inscripcion;
+import universidadejemplo.Entidades.Materia;
 
 public class NotasForm {
+
     private JPanel mainPanel;
-    private JComboBox<String> alumnoComboBox;
+    private JComboBox<Alumno> alumnoComboBox;
     private JComboBox<String> materiaComboBox;
     private JTextField notaField;
     private JButton guardarButton;
@@ -16,19 +24,9 @@ public class NotasForm {
     public NotasForm() {
         mainPanel = new JPanel(new GridLayout(4, 2));
 
-        // Cargar datos en los ComboBoxes (alumnos y materias) desde la base de datos o alguna otra fuente
-
-        alumnoComboBox = new JComboBox<>();
-        // Cargar lista de alumnos
-        alumnoComboBox.addItem("Alumno 1");
-        alumnoComboBox.addItem("Alumno 2");
-        // ...
-
-        materiaComboBox = new JComboBox<>();
-        // Cargar lista de materias
-        materiaComboBox.addItem("Materia 1");
-        materiaComboBox.addItem("Materia 2");
-        // ...
+        // Cargar datos en los ComboBoxes (alumnos y materias) desde la base de datos
+        cargarAlumnosDesdeBaseDeDatos();
+        cargarMateriasDesdeBaseDeDatos();
 
         mainPanel.add(new JLabel("Seleccione un alumno:"));
         mainPanel.add(alumnoComboBox);
@@ -46,15 +44,23 @@ public class NotasForm {
         guardarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Obtener los datos del formulario y guardar la nota en la base de datos
-                String alumnoSeleccionado = (String) alumnoComboBox.getSelectedItem();
-                String materiaSeleccionada = (String) materiaComboBox.getSelectedItem();
+                // Obtener los datos del formulario
+                Alumno alumnoSeleccionado = (Alumno) alumnoComboBox.getSelectedItem();
+                Materia materiaSeleccionada = obtenerMateriaPorNombre((String) materiaComboBox.getSelectedItem());
                 double nota = Double.parseDouble(notaField.getText());
 
-                // Lógica para guardar la nota en la base de datos
-                // ...
+                // Verificar si se seleccionó un alumno y una materia
+                if (alumnoSeleccionado != null && materiaSeleccionada != null) {
+                    // Lógica para guardar la nota en la base de datos
+                    InscripcionData inscripcionData = new InscripcionData();
+                    Inscripcion inscripcion = new Inscripcion(alumnoSeleccionado, materiaSeleccionada, nota);
+                    inscripcionData.guardarInscripcion(inscripcion);
 
-                // Actualizar la interfaz gráfica, si es necesario
+                    // Actualizar la interfaz gráfica, si es necesario
+                    JOptionPane.showMessageDialog(null, "Nota guardada con éxito.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Seleccione un alumno y una materia antes de guardar la nota.");
+                }
             }
         });
 
@@ -73,5 +79,53 @@ public class NotasForm {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    private void cargarAlumnosDesdeBaseDeDatos() {
+        AlumnoData alumnoData = new AlumnoData();
+        List<Alumno> alumnos = alumnoData.obtenerTodosLosAlumnos();
+
+        alumnoComboBox = new JComboBox<>(alumnos.toArray(new Alumno[0]));
+
+        alumnoComboBox.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Alumno) {
+                    Alumno alumno = (Alumno) value;
+                    setText(alumno.getNombre() + " " + alumno.getApellido());
+                }
+                return this;
+            }
+        });
+    }
+
+    private Materia obtenerMateriaPorNombre(String nombreMateria) {
+        MateriaData materiaData = new MateriaData();
+
+        // Obtener la lista de todas las materias desde la base de datos
+        List<Materia> materias = materiaData.obtenerTodasLasMaterias();
+
+        // Iterar sobre la lista de materias y buscar la que coincide con el nombre
+        for (Materia materia : materias) {
+            if (materia.getNombre().equals(nombreMateria)) {
+                // Utilizar la función buscarMateria con el ID de la materia encontrada
+                return materiaData.buscarMateria(materia.getIdMateria());
+            }
+        }
+
+        // Si no se encuentra la materia, puedes devolver null o lanzar una excepción según tus necesidades
+        return null;
+    }
+
+    private void cargarMateriasDesdeBaseDeDatos() {
+        MateriaData materiaData = new MateriaData();
+        List<Materia> materias = materiaData.obtenerTodasLasMaterias();
+
+        materiaComboBox = new JComboBox<>(); // Inicializa materiaComboBox
+
+        for (Materia materia : materias) {
+            materiaComboBox.addItem(materia.getNombre());
+        }
     }
 }

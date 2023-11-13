@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import universidadejemplo.AccesoADatos.AlumnoData;
 import universidadejemplo.Entidades.Alumno;
 
@@ -18,7 +20,7 @@ public class AlumnoForm {
     private JCheckBox estadoField;
 
     public AlumnoForm() {
-        mainPanel = new JPanel(new GridLayout(6, 2));
+        mainPanel = new JPanel(new GridLayout(8, 1)); // Cambiado a 8 filas para acomodar los elementos en el diseño deseado
 
         dniField = new JTextField();
         apellidoField = new JTextField();
@@ -38,24 +40,35 @@ public class AlumnoForm {
         JButton buscarButton = new JButton("Buscar");
         JButton salirButton = new JButton("Salir");
 
-        mainPanel.add(dniLabel);
-        mainPanel.add(dniField);
-        mainPanel.add(buscarButton);
+        JPanel dniPanel = new JPanel(new GridLayout(1, 3)); // Un panel para agrupar DNI y su etiqueta
+        dniPanel.add(dniLabel);
+        dniPanel.add(dniField);
+        dniPanel.add(buscarButton);
 
-        mainPanel.add(apellidoLabel);
-        mainPanel.add(apellidoField);
-        mainPanel.add(nombreLabel);
-        mainPanel.add(nombreField);
-        mainPanel.add(estadoLabel);
-        mainPanel.add(estadoField);
-        mainPanel.add(nombreField);
-        mainPanel.add(fechaNacLabel);
-        mainPanel.add(fechaNacField);
+        JPanel nombreApellidoPanel = new JPanel(new GridLayout(1, 4)); // Un panel para agrupar Nombre, Apellido y Estado
+        nombreApellidoPanel.add(nombreLabel);
+        nombreApellidoPanel.add(nombreField);
+        nombreApellidoPanel.add(apellidoLabel);
+        nombreApellidoPanel.add(apellidoField);
 
-        mainPanel.add(nuevoButton);
-        mainPanel.add(eliminarButton);
-        mainPanel.add(guardarButton);
-        mainPanel.add(salirButton);
+        JPanel fechaEstadoPanel = new JPanel(new GridLayout(1, 2)); // Un panel para agrupar Fecha de Nacimiento y Estado
+        fechaEstadoPanel.add(fechaNacLabel);
+        fechaEstadoPanel.add(fechaNacField);
+        fechaEstadoPanel.add(estadoLabel);
+        fechaEstadoPanel.add(estadoField);
+
+        // Agregado para colocar los botones en la última fila
+        JPanel botonesPanel = new JPanel(new GridLayout(1, 4));
+        botonesPanel.add(nuevoButton);
+        botonesPanel.add(eliminarButton);
+        botonesPanel.add(guardarButton);
+        botonesPanel.add(salirButton);
+
+        // Agregando los paneles al panel principal
+        mainPanel.add(dniPanel);
+        mainPanel.add(nombreApellidoPanel);
+        mainPanel.add(fechaEstadoPanel);
+        mainPanel.add(botonesPanel);
 
         AlumnoData alumnoData = new AlumnoData();
 
@@ -69,34 +82,39 @@ public class AlumnoForm {
                 estadoField.setSelected(false);
             }
         });
+        guardarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Obtener los datos del formulario y guardar el alumno en la base de datos
+                int dni = Integer.parseInt(dniField.getText());
+                String apellido = apellidoField.getText();
+                String nombre = nombreField.getText();
+                LocalDate fechaNacimiento = obtenerFechaDesdeTexto(fechaNacField.getText());
+                boolean estado = estadoField.isSelected();
+
+                Alumno alumno = new Alumno(dni, apellido, nombre, fechaNacimiento, estado); // Activo se establece en "true"
+
+                // Lógica para guardar el alumno en la base de datos usando AlumnoData
+                alumnoData.guardarAlumno(alumno);
+
+                // Cerrar la ventana del formulario después de guardar
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+                frame.dispose();
+            }
+        });
 
         eliminarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String dniText = dniField.getText();
-                if (!dniText.isEmpty()) {
-                    int dni = Integer.parseInt(dniText);
-                    alumnoData.eliminarAlumnoPorDni(dni);
-                    dniField.setText("");
-                    apellidoField.setText("");
-                    nombreField.setText("");
-                    fechaNacField.setText("");
-                    estadoField.setSelected(false);
-                }
-            }
-        });
-
-        guardarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                // Obtener el DNI del formulario y eliminar el alumno de la base de datos
                 int dni = Integer.parseInt(dniField.getText());
-                String apellido = apellidoField.getText();
-                String nombre = nombreField.getText();
-                LocalDate fechaNac = LocalDate.parse(fechaNacField.getText());
-                boolean activo = estadoField.isSelected();
 
-                Alumno alumno = new Alumno(dni, apellido, nombre, fechaNac, activo);
-                alumnoData.guardarAlumno(alumno);
+                // Lógica para eliminar el alumno de la base de datos
+                alumnoData.eliminarAlumnoPorDni(dni);
+
+                // Cerrar la ventana del formulario después de eliminar
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+                nuevoButton.doClick();
             }
         });
 
@@ -130,6 +148,12 @@ public class AlumnoForm {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    private LocalDate obtenerFechaDesdeTexto(String fechaTexto) {
+        // Ajusta el formato según cómo se ingresa la fecha en tu campo de texto
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return LocalDate.parse(fechaTexto, formatter);
     }
 
     public static void main(String[] args) {
