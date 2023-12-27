@@ -1,29 +1,34 @@
 package com.biblioteca.model;
 
 public class Lector {
-
-    private int nroSocio;
-
+    private String DNI;
     private String nombre;
+    private String domicilio;
+    private String telefono;
+    private boolean Estado;
 
-    private Object domicilio;
+    public Lector() {
+        // Constructor sin argumentos
+    }
 
-    private String mail;
-
-    private boolean estado;
-
-    public Lector(String nombre, Object domicilio, String mail, boolean estado) {
+    // Corregir el nombre del parámetro a 'estado'
+    public Lector(String DNI, String nombre, String domicilio, String telefono, boolean estado) {
+        this.DNI = DNI;
         this.nombre = nombre;
         this.domicilio = domicilio;
-        this.mail = mail;
-        this.estado = estado;
+        this.telefono = telefono;
+        this.Estado = estado;  // Asignar correctamente el valor del parámetro
     }
 
-    public int getNroSocio() {
-        return nroSocio;
+    // Getters y setters para cada atributo
+
+    public String getDNI() {
+        return DNI;
     }
 
-  
+    public void setDNI(String DNI) {
+        this.DNI = DNI;
+    }
 
     public String getNombre() {
         return nombre;
@@ -33,27 +38,32 @@ public class Lector {
         this.nombre = nombre;
     }
 
-    public Object getDomicilio() {
+    public String getDomicilio() {
         return domicilio;
     }
 
-    public void setDomicilio(Object domicilio) {
+    public void setDomicilio(String domicilio) {
         this.domicilio = domicilio;
     }
 
-    public String getMail() {
-        return mail;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public boolean isEstado() {
-        return estado;
+   public boolean isActivo() {
+    return "Activo".equals(Estado);
+}
+
+    public void setActivo(boolean Estado) {
+        this.Estado = Estado;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    @Override
+    public String toString() {
+        return String.format("%s - %s", DNI, nombre);
     }
 }

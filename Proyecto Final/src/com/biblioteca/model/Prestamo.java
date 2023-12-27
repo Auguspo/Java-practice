@@ -1,74 +1,95 @@
 package com.biblioteca.model;
 
-
-import sun.util.calendar.BaseCalendar.Date;
+import java.sql.Date;
 
 public class Prestamo {
 
-    private Date fechaInicio;
-
-    private Date fechaFin;
-
+    private int ID;
+    private String lectorDNI;
+    private int ejemplarID;
+    private Date fechaPrestamo;
+    private Date fechaDevolucion;
+    private String estado;
     private Ejemplar ejemplar;
-
-    private Lector lector;
-
-    private boolean estado;
+    private String isbn; // Nuevo campo para el ISBN
 
     public Prestamo() {
+        // Constructor sin argumentos
     }
 
-    public void solicitarLibro() {
+    // Constructor modificado para incluir el ISBN
+    public Prestamo(int id, String lectorDNI, int ejemplarID, Date fechaPrestamo, Date fechaDevolucion, String estado, String isbn) {
+        this.ID = id;
+        this.lectorDNI = lectorDNI;
+        this.ejemplarID = ejemplarID;
+        this.fechaPrestamo = fechaPrestamo;
+        this.fechaDevolucion = fechaDevolucion;
+        this.estado = estado;
+        this.isbn = isbn; // Establecer el ISBN
     }
 
-    public void devolverLibro() {
+    // Getters y setters para cada atributo
+    public int getID() {
+        return ID;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public String getLectorDNI() {
+        return lectorDNI;
     }
 
-    public Date getFechaFin() {
-        return fechaFin;
+    public void setLectorDNI(String lectorDNI) {
+        this.lectorDNI = lectorDNI;
     }
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public int getEjemplarID() {
+        return ejemplarID;
+    }
+
+    public void setEjemplarID(int ejemplarID) {
+        this.ejemplarID = ejemplarID;
+    }
+
+    public Date getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(Date fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public Date getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(Date fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getISBN() {
+        return isbn;
+    }
+
+    public void setISBN(String isbn) {
+        this.isbn = isbn;
     }
 
     public Ejemplar getEjemplar() {
         return ejemplar;
     }
-
-    public void setEjemplar(Ejemplar ejemplar) {
-        this.ejemplar = ejemplar;
-    }
-
-    public Lector getLector() {
-        return lector;
-    }
-
-    public void setLector(Lector lector) {
-        this.lector = lector;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public Prestamo(Date fechaInicio, Date fechaFin, Ejemplar ejemplar, Lector lector, boolean estado) {
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.ejemplar = ejemplar;
-        this.lector = lector;
-        this.estado = estado;
+  public String toString() {
+        return String.format("ID: %d, Lector: %s, Ejemplar: %d, ISBN: %s, Estado: %s",
+                getID(), getLectorDNI(), getEjemplarID(), getISBN(), getEstado());
     }
 }

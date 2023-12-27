@@ -2,50 +2,60 @@ package com.biblioteca.model;
 
 public class Ejemplar {
 
-    public Ejemplar(int codigo, Libro libro, boolean estado, int cantidad) {
-        this.codigo = codigo;
-        this.libro = libro;
-        this.estado = estado;
-        this.cantidad = cantidad;
+    private int ID;
+    private String libroISBN;
+    private String estado;
+
+    public Ejemplar() {
+        // Constructor sin argumentos
     }
-
-    private int codigo;
-
     private Libro libro;
-    private int cantidad ;
 
-    public int getCantidad() {
-        return cantidad;
+    public Ejemplar(int ID, String libroISBN, String estado) {
+        this.ID = ID;
+        this.libroISBN = libroISBN;
+        this.estado = estado;
+    }
+  public Ejemplar(String libroISBN, String estado) {
+        this.libroISBN = libroISBN;
+        this.estado = estado;
+         // Valor por defecto, indica que se generará automáticamente al guardar en la base de datos
+    }
+    // Getters y setters para cada atributo
+    public int getID() {
+        return ID;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    private boolean estado;
-
-    public int getCodigo() {
-        return codigo;
+    public String getLibroISBN() {
+        return libroISBN;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setLibroISBN(String libroISBN) {
+        this.libroISBN = libroISBN;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public Libro getLibro() {
         return libro;
     }
 
-    public void setLibro(Libro libro) {
-        this.libro = libro;
+      @Override
+    public String toString() {
+        return "Ejemplar{" +
+                "id=" + ID +
+                ", libroISBN='" + libroISBN + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
 }

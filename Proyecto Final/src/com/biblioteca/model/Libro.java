@@ -2,50 +2,48 @@ package com.biblioteca.model;
 
 public class Libro {
 
-    private int isbn;
-
-    private String titulo;
-
-    private String autor;
-
-    private int anio;
-
+    private String ISBN;
+    private String nombre;
     private String genero;
-
     private String editorial;
+    private String autor;
+    private String estado;
+    private int cantidad;
 
-    private boolean estado;
-
-    public int getIsbn() {
-        return isbn;
+    public Libro() {
+        // Constructor sin argumentos
     }
 
-    public void setIsbn(int isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
+    public Libro(String ISBN, String nombre, String genero, String editorial, String autor, String estado, int cantidad) {
+        this.ISBN = ISBN;
+        this.nombre = nombre;
+        this.genero = genero;
+        this.editorial = editorial;
         this.autor = autor;
+        this.estado = estado;
+        this.cantidad = cantidad;
     }
 
-    public int getAnio() {
-        return anio;
+    @Override
+    public String toString() {
+        return String.format("%s - %s", ISBN, nombre);
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    // Getters y setters para cada atributo
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getGenero() {
@@ -64,22 +62,27 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public boolean isEstado() {
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public Libro(int isbn, String titulo, String autor, int anio, String genero, String editorial, boolean estado) {
-        this.isbn = isbn;
-        this.titulo = titulo;
-        this.autor = autor;
-        this.anio = anio;
-        this.genero = genero;
-        this.editorial = editorial;
-        this.estado = estado;
+    public int getCantidad() {
+        return cantidad;
     }
 
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 }
